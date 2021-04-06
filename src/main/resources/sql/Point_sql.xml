@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.coldsmog.luckinmap.dao.PointDao">
+
+    <!-- Point结果集 -->
+    <resultMap id="PointMap" class="com.coldsmog.luckinmap.model.entity.Point" >
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="creater" property="creater" jdbcType="BIGINT"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="mender" property="mender" jdbcType="BIGINT"/>
+        <result column="deleted" property="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 表名 -->
+    <sql id="table_name">point</sql>
+
+    <!-- 所有字段 -->
+    <sql id="all_columns">
+        id, name, address, state, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 不带主键的所有字段 -->
+    <sql id="all_columns_not_with_id">
+        name, address, state, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 查询的条件 -->
+    <sql id="all_query_condition">
+        <isNotNull prepend="AND" property="id">
+            id = #id#
+        </isNotNull>
+        <isNotNull prepend="AND" property="name">
+            name = #name#
+        </isNotNull>
+        <isNotNull prepend="AND" property="address">
+            address = #address#
+        </isNotNull>
+        <isNotNull prepend="AND" property="state">
+            state = #state#
+        </isNotNull>
+        <isNotNull prepend="AND" property="createTime">
+            create_time = #createTime#
+        </isNotNull>
+        <isNotNull prepend="AND" property="creater">
+            creater = #creater#
+        </isNotNull>
+        <isNotNull prepend="AND" property="updateTime">
+            update_time = #updateTime#
+        </isNotNull>
+        <isNotNull prepend="AND" property="mender">
+            mender = #mender#
+        </isNotNull>
+        <isNotNull prepend="AND" property="deleted">
+            deleted = #deleted#
+        </isNotNull>
+
+    </sql>
+
+    <!-- 查询条件带where -->
+    <sql id="all_query_condition_with_where">
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="AND" property="id">
+                id = #id#
+            </isNotNull>
+            <isNotNull prepend="AND" property="name">
+                name = #name#
+            </isNotNull>
+            <isNotNull prepend="AND" property="address">
+                address = #address#
+            </isNotNull>
+            <isNotNull prepend="AND" property="state">
+                state = #state#
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="AND" property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="AND" property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 删除条件带where -->
+    <sql id="all_delete_condition_with_where">
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="AND" property="name">
+                name = #name#
+            </isNotNull>
+            <isNotNull prepend="AND" property="address">
+                address = #address#
+            </isNotNull>
+            <isNotNull prepend="AND" property="state">
+                state = #state#
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="AND" property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="AND" property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 更新条件带set -->
+    <sql id="all_set_condition_with_set">
+        <dynamic prepend="SET">
+            <isNotNull prepend="," property="name">
+                name = #name#
+            </isNotNull>
+            <isNotNull prepend="," property="address">
+                address = #address#
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                state = #state#
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!--根据对象属性插入-->
+    <insert id="insertByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Point">
+        INSERT INTO <include refid="table_name"/>
+        <dynamic prepend="(" close=")">
+            <isNotNull prepend="," property="name">
+                name
+            </isNotNull>
+            <isNotNull prepend="," property="address">
+                address
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                state
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                create_time
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                creater
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                update_time
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                mender
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                deleted
+            </isNotNull>
+        </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+            <isNotNull prepend="," property="name">
+                #name#
+            </isNotNull>
+            <isNotNull prepend="," property="address">
+                #address#
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                #state#
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                #createTime#
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                #creater#
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                #updateTime#
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                #mender#
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                #deleted#
+            </isNotNull>
+        </dynamic>
+        <selectKey resultClass="java.lang.Integer" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--根据主键更新-->
+    <update id="updateByPrimaryKey" parameterClass="com.coldsmog.luckinmap.model.entity.Point">
+        UPDATE <include refid="table_name"/>
+            <include refid="all_set_condition_with_set"/>
+        WHERE
+            id = #id#
+    </update>
+
+    <!--根据主键删除-->
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.Integer">
+        DELETE FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #id#
+    </delete>
+
+    <!--根据属性删除-->
+    <delete id="deleteByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Point">
+        DELETE FROM <include refid="table_name"/>
+        <include refid="all_delete_condition_with_where"/>
+    </delete>
+
+    <!-- 根据主键查询 -->
+    <select id="selectByPrimaryKey" parameterClass="java.lang.Integer" resultMap="PointMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #id#
+    </select>
+
+    <!-- 根据对象属性查询 -->
+    <select id="selectByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Point" resultMap="PointMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+    <!-- 根据对象属性查询统计 -->
+    <select id="countByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Point" resultClass="java.lang.Long">
+        SELECT
+            COUNT(*)
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+</sqlMap>

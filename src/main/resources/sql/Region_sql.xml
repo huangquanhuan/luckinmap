@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.coldsmog.luckinmap.dao.RegionDao">
+
+    <!-- Region结果集 -->
+    <resultMap id="RegionMap" class="com.coldsmog.luckinmap.model.entity.Region" >
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="region_id" property="regionId" jdbcType="INTEGER"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="creater" property="creater" jdbcType="BIGINT"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="mender" property="mender" jdbcType="BIGINT"/>
+        <result column="deleted" property="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 表名 -->
+    <sql id="table_name">region</sql>
+
+    <!-- 所有字段 -->
+    <sql id="all_columns">
+        id, region_id, province, city, area, longitude, latitude, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 不带主键的所有字段 -->
+    <sql id="all_columns_not_with_id">
+        region_id, province, city, area, longitude, latitude, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 查询的条件 -->
+    <sql id="all_query_condition">
+        <isNotNull prepend="AND" property="id">
+            id = #id#
+        </isNotNull>
+        <isNotNull prepend="AND" property="regionId">
+            region_id = #regionId#
+        </isNotNull>
+        <isNotNull prepend="AND" property="province">
+            province = #province#
+        </isNotNull>
+        <isNotNull prepend="AND" property="city">
+            city = #city#
+        </isNotNull>
+        <isNotNull prepend="AND" property="area">
+            area = #area#
+        </isNotNull>
+        <isNotNull prepend="AND" property="longitude">
+            longitude = #longitude#
+        </isNotNull>
+        <isNotNull prepend="AND" property="latitude">
+            latitude = #latitude#
+        </isNotNull>
+        <isNotNull prepend="AND" property="createTime">
+            create_time = #createTime#
+        </isNotNull>
+        <isNotNull prepend="AND" property="creater">
+            creater = #creater#
+        </isNotNull>
+        <isNotNull prepend="AND" property="updateTime">
+            update_time = #updateTime#
+        </isNotNull>
+        <isNotNull prepend="AND" property="mender">
+            mender = #mender#
+        </isNotNull>
+        <isNotNull prepend="AND" property="deleted">
+            deleted = #deleted#
+        </isNotNull>
+
+    </sql>
+
+    <!-- 查询条件带where -->
+    <sql id="all_query_condition_with_where">
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="AND" property="id">
+                id = #id#
+            </isNotNull>
+            <isNotNull prepend="AND" property="regionId">
+                region_id = #regionId#
+            </isNotNull>
+            <isNotNull prepend="AND" property="province">
+                province = #province#
+            </isNotNull>
+            <isNotNull prepend="AND" property="city">
+                city = #city#
+            </isNotNull>
+            <isNotNull prepend="AND" property="area">
+                area = #area#
+            </isNotNull>
+            <isNotNull prepend="AND" property="longitude">
+                longitude = #longitude#
+            </isNotNull>
+            <isNotNull prepend="AND" property="latitude">
+                latitude = #latitude#
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="AND" property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="AND" property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 删除条件带where -->
+    <sql id="all_delete_condition_with_where">
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="AND" property="regionId">
+                region_id = #regionId#
+            </isNotNull>
+            <isNotNull prepend="AND" property="province">
+                province = #province#
+            </isNotNull>
+            <isNotNull prepend="AND" property="city">
+                city = #city#
+            </isNotNull>
+            <isNotNull prepend="AND" property="area">
+                area = #area#
+            </isNotNull>
+            <isNotNull prepend="AND" property="longitude">
+                longitude = #longitude#
+            </isNotNull>
+            <isNotNull prepend="AND" property="latitude">
+                latitude = #latitude#
+            </isNotNull>
+            <isNotNull prepend="AND" property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="AND" property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="AND" property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="AND" property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!-- 更新条件带set -->
+    <sql id="all_set_condition_with_set">
+        <dynamic prepend="SET">
+            <isNotNull prepend="," property="regionId">
+                region_id = #regionId#
+            </isNotNull>
+            <isNotNull prepend="," property="province">
+                province = #province#
+            </isNotNull>
+            <isNotNull prepend="," property="city">
+                city = #city#
+            </isNotNull>
+            <isNotNull prepend="," property="area">
+                area = #area#
+            </isNotNull>
+            <isNotNull prepend="," property="longitude">
+                longitude = #longitude#
+            </isNotNull>
+            <isNotNull prepend="," property="latitude">
+                latitude = #latitude#
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                create_time = #createTime#
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                creater = #creater#
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                update_time = #updateTime#
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                mender = #mender#
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                deleted = #deleted#
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <!--根据对象属性插入-->
+    <insert id="insertByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Region">
+        INSERT INTO <include refid="table_name"/>
+        <dynamic prepend="(" close=")">
+            <isNotNull prepend="," property="regionId">
+                region_id
+            </isNotNull>
+            <isNotNull prepend="," property="province">
+                province
+            </isNotNull>
+            <isNotNull prepend="," property="city">
+                city
+            </isNotNull>
+            <isNotNull prepend="," property="area">
+                area
+            </isNotNull>
+            <isNotNull prepend="," property="longitude">
+                longitude
+            </isNotNull>
+            <isNotNull prepend="," property="latitude">
+                latitude
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                create_time
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                creater
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                update_time
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                mender
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                deleted
+            </isNotNull>
+        </dynamic>
+        VALUES
+        <dynamic prepend="(" close=")">
+            <isNotNull prepend="," property="regionId">
+                #regionId#
+            </isNotNull>
+            <isNotNull prepend="," property="province">
+                #province#
+            </isNotNull>
+            <isNotNull prepend="," property="city">
+                #city#
+            </isNotNull>
+            <isNotNull prepend="," property="area">
+                #area#
+            </isNotNull>
+            <isNotNull prepend="," property="longitude">
+                #longitude#
+            </isNotNull>
+            <isNotNull prepend="," property="latitude">
+                #latitude#
+            </isNotNull>
+            <isNotNull prepend="," property="createTime">
+                #createTime#
+            </isNotNull>
+            <isNotNull prepend="," property="creater">
+                #creater#
+            </isNotNull>
+            <isNotNull prepend="," property="updateTime">
+                #updateTime#
+            </isNotNull>
+            <isNotNull prepend="," property="mender">
+                #mender#
+            </isNotNull>
+            <isNotNull prepend="," property="deleted">
+                #deleted#
+            </isNotNull>
+        </dynamic>
+        <selectKey resultClass="java.lang.Integer" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--根据主键更新-->
+    <update id="updateByPrimaryKey" parameterClass="com.coldsmog.luckinmap.model.entity.Region">
+        UPDATE <include refid="table_name"/>
+            <include refid="all_set_condition_with_set"/>
+        WHERE
+            id = #id#
+    </update>
+
+    <!--根据主键删除-->
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.Integer">
+        DELETE FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #id#
+    </delete>
+
+    <!--根据属性删除-->
+    <delete id="deleteByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Region">
+        DELETE FROM <include refid="table_name"/>
+        <include refid="all_delete_condition_with_where"/>
+    </delete>
+
+    <!-- 根据主键查询 -->
+    <select id="selectByPrimaryKey" parameterClass="java.lang.Integer" resultMap="RegionMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #id#
+    </select>
+
+    <!-- 根据对象属性查询 -->
+    <select id="selectByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Region" resultMap="RegionMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+    <!-- 根据对象属性查询统计 -->
+    <select id="countByProperty" parameterClass="com.coldsmog.luckinmap.model.entity.Region" resultClass="java.lang.Long">
+        SELECT
+            COUNT(*)
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+</sqlMap>

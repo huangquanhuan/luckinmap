@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coldsmog.luckinmap.mapper.RegionMapper">
+
+    <!-- Region结果集 -->
+    <resultMap id="RegionMap" type="com.coldsmog.luckinmap.model.entity.Region" >
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="region_id" property="regionId" jdbcType="INTEGER"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="DOUBLE"/>
+        <result column="latitude" property="latitude" jdbcType="DOUBLE"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="creater" property="creater" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="mender" property="mender" jdbcType="VARCHAR"/>
+        <result column="deleted" property="deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 表名 -->
+    <sql id="table_name">t_region</sql>
+
+    <!-- 所有字段 -->
+    <sql id="all_columns">
+        id, region_id, province, city, area, longitude, latitude, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 不带主键的所有字段 -->
+    <sql id="all_columns_not_with_id">
+        region_id, province, city, area, longitude, latitude, create_time, creater, update_time, mender, deleted
+    </sql>
+
+    <!-- 查询条件带where -->
+    <sql id="all_query_condition_with_where">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="regionId != null">
+                AND region_id = #{regionId}
+            </if>
+            <if test="province != null and '' != province">
+                AND province = #{province}
+            </if>
+            <if test="city != null and '' != city">
+                AND city = #{city}
+            </if>
+            <if test="area != null and '' != area">
+                AND area = #{area}
+            </if>
+            <if test="longitude != null">
+                AND longitude = #{longitude}
+            </if>
+            <if test="latitude != null">
+                AND latitude = #{latitude}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime}
+            </if>
+            <if test="creater != null and '' != creater">
+                AND creater = #{creater}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="mender != null and '' != mender">
+                AND mender = #{mender}
+            </if>
+            <if test="deleted != null">
+                AND deleted = #{deleted}
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 删除条件带where -->
+    <sql id="all_delete_condition_with_where">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="regionId != null">
+                AND region_id = #{regionId}
+            </if>
+            <if test="province != null and '' != province">
+                AND province = #{province}
+            </if>
+            <if test="city != null and '' != city">
+                AND city = #{city}
+            </if>
+            <if test="area != null and '' != area">
+                AND area = #{area}
+            </if>
+            <if test="longitude != null">
+                AND longitude = #{longitude}
+            </if>
+            <if test="latitude != null">
+                AND latitude = #{latitude}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime}
+            </if>
+            <if test="creater != null and '' != creater">
+                AND creater = #{creater}
+            </if>
+            <if test="updateTime != null">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="mender != null and '' != mender">
+                AND mender = #{mender}
+            </if>
+            <if test="deleted != null">
+                AND deleted = #{deleted}
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 更新条件带set -->
+    <sql id="all_set_condition_with_set">
+        <set>
+            <if test="regionId != null">
+                region_id = #{regionId},
+            </if>
+            <if test="province != null and '' != province">
+                province = #{province},
+            </if>
+            <if test="city != null and '' != city">
+                city = #{city},
+            </if>
+            <if test="area != null and '' != area">
+                area = #{area},
+            </if>
+            <if test="longitude != null">
+                longitude = #{longitude},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="creater != null and '' != creater">
+                creater = #{creater},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="mender != null and '' != mender">
+                mender = #{mender},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted}
+            </if>
+        </set>
+    </sql>
+
+    <!-- 批量更新条件带set -->
+    <sql id="all_batch_set_condition_with_set">
+        <set>
+            <if test="item.regionId != null">
+                region_id = #{item.regionId},
+            </if>
+            <if test="item.province != null and '' != item.province">
+                province = #{item.province},
+            </if>
+            <if test="item.city != null and '' != item.city">
+                city = #{item.city},
+            </if>
+            <if test="item.area != null and '' != item.area">
+                area = #{item.area},
+            </if>
+            <if test="item.longitude != null">
+                longitude = #{item.longitude},
+            </if>
+            <if test="item.latitude != null">
+                latitude = #{item.latitude},
+            </if>
+            <if test="item.createTime != null">
+                create_time = #{item.createTime},
+            </if>
+            <if test="item.creater != null and '' != item.creater">
+                creater = #{item.creater},
+            </if>
+            <if test="item.updateTime != null">
+                update_time = #{item.updateTime},
+            </if>
+            <if test="item.mender != null and '' != item.mender">
+                mender = #{item.mender},
+            </if>
+            <if test="item.deleted != null">
+                deleted = #{item.deleted}
+            </if>
+        </set>
+    </sql>
+
+    <!--根据对象属性插入-->
+    <insert id="insertByProperty" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="com.coldsmog.luckinmap.model.entity.Region">
+        INSERT INTO <include refid="table_name"/>
+        (
+            <include refid="all_columns_not_with_id"/>
+        )
+        VALUES (
+            #{regionId}, #{province}, #{city}, #{area}, #{longitude}, #{latitude}, #{createTime}, #{creater}, #{updateTime}, #{mender}, #{deleted}
+        )
+    </insert>
+
+    <!--根据对象属性插入-->
+    <insert id="insertBatchByProperty" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="java.util.List">
+        INSERT INTO <include refid="table_name"/>
+        (
+            <include refid="all_columns_not_with_id"/>
+        )
+        VALUES
+        <foreach collection="list" item="item" separator="," index = "index">
+        (
+            #{item.regionId}, #{item.province}, #{item.city}, #{item.area}, #{item.longitude}, #{item.latitude}, #{item.createTime}, #{item.creater}, #{item.updateTime}, #{item.mender}, #{item.deleted}
+        )
+        </foreach>
+    </insert>
+
+    <!--根据主键更新-->
+    <update id="updateByPrimaryKey" parameterType="com.coldsmog.luckinmap.model.entity.Region">
+        UPDATE <include refid="table_name"/>
+            <include refid="all_set_condition_with_set"/>
+        WHERE
+            id = #{id}
+    </update>
+
+    <!--根据主键批量更新-->
+    <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";">
+            UPDATE <include refid="table_name"/>
+                <include refid="all_batch_set_condition_with_set"/>
+            WHERE
+                id = #{item.id}
+        </foreach>
+    </update>
+
+    <!--根据主键删除-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #{id}
+    </delete>
+
+    <!--根据主键列表批量删除-->
+    <delete id="deleteBatchByPrimaryKey" parameterType="java.util.List">
+        DELETE FROM
+            <include refid="table_name"/>
+        WHERE
+            id
+        IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!--根据属性删除-->
+    <delete id="deleteByProperty" parameterType="com.coldsmog.luckinmap.model.entity.Region">
+        DELETE FROM <include refid="table_name"/>
+        <include refid="all_delete_condition_with_where"/>
+    </delete>
+
+    <!-- 根据主键查询 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="RegionMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        WHERE
+            id = #{id}
+    </select>
+
+    <!-- 根据对象属性查询 -->
+    <select id="selectByProperty" parameterType="com.coldsmog.luckinmap.model.entity.Region" resultMap="RegionMap">
+        SELECT
+            <include refid="all_columns"/>
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+    <!-- 根据对象属性查询统计 -->
+    <select id="countByProperty" parameterType="com.coldsmog.luckinmap.model.entity.Region" resultType="java.lang.Long">
+        SELECT
+            COUNT(*)
+        FROM
+            <include refid="table_name"/>
+        <include refid="all_query_condition_with_where"/>
+    </select>
+
+</mapper>
